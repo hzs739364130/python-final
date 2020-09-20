@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Proudly presented by ECharts</title>
+    {% for jsfile_name in script_list %}
+        <script src="../static/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+</head>
+
+<body style="margin: auto">
+<div style="margin: auto;width: 70%">
+    <div>
+        <h3>交互式数据可视化主题</h3>
+    </div>
+
+    <form action="/" style="float: left">
+        <button type="submit">首页</button>
+    </form>
+
+    <form action="/gpd_map" style="float: left;margin-left: 10px">
+        <button type="submit">2013年-2017年世界各地区GDP总量</button>
+    </form>
+    <form action="/traver_gdp" style="float: left;margin-left: 10px">
+        <button type="submit">2013-2017世界各地区旅游总收入与GDP总量对比</button>
+    </form>
+    <form action="/pie" style="float: left;margin-left: 10px">
+        <button type="submit">迁移人数对比</button>
+    </form>
+    <form action="/traverse_map" style="float: left;margin-left: 10px">
+        <button type="submit">世界各地区旅游总收入</button>
+    </form>
+    <form action="/pm25" style="float: left;margin-left: 10px">
+        <button type="submit">各地区PM2.5</button>
+    </form>
+    <div style="clear: both"></div>
+    <div style="margin-top: 15px">
+        {{ myechart|safe }}
+    </div>
+    <div style="size: 50px"><b>{% if text %}
+        分析
+    {% endif %}</b></div>
+    <div style="float: left;width: 70%">
+        <p style="text-indent:2em">{{ text }}</p>
+    </div>
+    <div style="size: 50px;clear: both"><b>{% if text1 %}
+        发现与结论
+    {% endif %}</b></div>
+    <div style="float: left;width: 70%">
+        <p style="text-indent:2em">{{ text1 }}</p>
+    </div>
+    {% if a %}
+        <table border="1" style="margin-top: 10px">
+            <tr>
+                <td colspan="11" style="text-align: center"> 2010-2017各国pm2.5值对比</td>
+            </tr>
+            <tr>
+                <td></td>
+                {% for i in data3_x %}
+                    <td style="width: 50px;text-align: center">{{ i }}</td>
+                {% endfor %}
+            </tr>
+            {% for foo in data3_y %}
+                <tr>
+                    {% for i in foo %}
+                        <td style="width: 50px;text-align: center">{{ i }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+
+
+        </table>
+        <table border="1" style="margin-top: 10px">
+            <tr>
+                <td colspan="11" style="text-align: center">各国迁移人数</td>
+            </tr>
+            <tr>
+                <td></td>
+                {% for i in data4_x %}
+                    <td style="width: 50px;text-align: center">{{ i }}</td>
+                {% endfor %}
+            </tr>
+            {% for foo in data4_y %}
+                <tr>
+                    {% for i in foo %}
+                        <td style="width: 50px;text-align: center">{{ i }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+
+
+        </table>
+        <table border="1" style="margin-top: 10px">
+            <tr>
+                <td colspan="11" style="text-align: center">2013-2017各地区GDP对比</td>
+            </tr>
+            <tr>
+                <td></td>
+                {% for i in data1_x %}
+                    <td style="width: 50px;text-align: center">{{ i }}</td>
+                {% endfor %}
+            </tr>
+            {% for foo in data1_y %}
+                <tr>
+                    {% for i in foo %}
+                        <td style="width: 50px;text-align: center">{{ i }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+
+
+        </table>
+        <table border="1" style="margin-top: 10px">
+            <tr>
+                <td colspan="11" style="text-align: center"> 2013-2017各地区旅游人数对比</td>
+            </tr>
+            <tr>
+                <td></td>
+                {% for i in data2_x %}
+                    <td style="width: 50px;text-align: center">{{ i }}</td>
+                {% endfor %}
+            </tr>
+            {% for foo in data2_y %}
+                <tr>
+                    {% for i in foo %}
+                        <td style="width: 50px;text-align: center">{{ i }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+
+
+        </table>
+    {% endif %}
+</div>
+</body>
+</html>
